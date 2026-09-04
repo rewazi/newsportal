@@ -24,6 +24,18 @@ class Routing
                 $controller->category();
                 break;
 
+            case 'register':
+                $controller->register();
+                break;
+
+            case 'account-login':
+                $controller->accountLogin();
+                break;
+
+            case 'account-logout':
+                $controller->accountLogout();
+                break;
+
             case 'catnews':
                 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
                 $controller->catNews($id);

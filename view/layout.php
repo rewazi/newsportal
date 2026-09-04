@@ -303,6 +303,21 @@
             <a href="index.php?route=category">
                 Категории
             </a>
+
+            <a href="index.php?route=register">
+                Регистрация
+            </a>
+
+            <?php if (!empty($_SESSION['accountUserId'])): ?>
+                <span>Вы вошли как <?= htmlspecialchars($_SESSION['accountName'] ?? '', ENT_QUOTES, 'UTF-8') ?></span>
+                <a href="index.php?route=account-logout">Выйти</a>
+            <?php else: ?>
+                <a href="index.php?route=account-login">Войти в аккаунт</a>
+            <?php endif; ?>
+
+            <?php if (!empty($_SESSION['userId']) && ($_SESSION['status'] ?? '') === 'admin'): ?>
+                <a href="admin/index.php?route=dashboard">Админ-панель</a>
+            <?php endif; ?>
         </nav>
 
     </div>
@@ -335,6 +350,20 @@
             case 'category':
 
                 require __DIR__ . '/category.php';
+
+                break;
+
+
+            case 'register':
+
+                require __DIR__ . '/register.php';
+
+                break;
+
+
+            case 'account-login':
+
+                require __DIR__ . '/accountLogin.php';
 
                 break;
 

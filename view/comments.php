@@ -5,6 +5,10 @@ class ViewComments
     public static function form($newsId)
     {
         $newsId = (int)$newsId;
+        if (empty($_SESSION['accountUserId'])) {
+            echo '<p><a href="index.php?route=account-login">Войдите в аккаунт</a>, чтобы написать комментарий.</p>';
+            return;
+        }
         ?>
         <section class="comments-form">
             <h2>Добавить комментарий</h2>

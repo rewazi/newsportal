@@ -11,19 +11,20 @@ class Comments
         $this->db = new DB();
     }
 
-    public function add($newsId, $text)
+    public function add($newsId, $text, $userId)
     {
         $newsId = (int)$newsId;
+        $userId = (int)$userId;
         $text = trim($text);
 
-        if ($newsId <= 0 || $text === '') {
+        if ($newsId <= 0 || $userId <= 0 || $text === '') {
             return false;
         }
 
         return $this->db->executePrepared(
             'INSERT INTO comments (user_id, news_id, text) VALUES (:user_id, :news_id, :text)',
             [
-                ':user_id' => 1,
+                ':user_id' => $userId,
                 ':news_id' => $newsId,
                 ':text' => $text,
             ]

@@ -47,6 +47,14 @@ class DB
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getOnePrepared($sql, $params)
+    {
+        $statement = $this->connection->prepare($sql);
+        $statement->execute($params);
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
  
     public function execute($sql)
     {
