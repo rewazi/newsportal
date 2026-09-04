@@ -32,6 +32,10 @@
                         <?= htmlspecialchars($item['user_id']) ?>
                     </div>
 
+                    <div class="comment-count">
+                        Комментариев: <?= (int)$item['comment_count'] ?>
+                    </div>
+
                     <a
                         class="button"
                         href="index.php?route=readnews&id=<?= $item['id'] ?>"

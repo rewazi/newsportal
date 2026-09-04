@@ -35,6 +35,9 @@
 
     </div>
 
+    <?php ViewComments::list($comments ?? []); ?>
+    <?php ViewComments::form($news['id']); ?>
+
     <br>
 
     <a

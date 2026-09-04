@@ -153,6 +153,48 @@
             margin-bottom: 20px;
         }
 
+        .comments-form,
+        .comments {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .comments-form h2,
+        .comments h2 {
+            margin-bottom: 15px;
+        }
+
+        .comments-form textarea {
+            display: block;
+            width: 100%;
+            min-height: 100px;
+            margin: 8px 0 12px;
+            padding: 10px;
+            resize: vertical;
+        }
+
+        .comments-form button {
+            background: #222;
+            color: white;
+            border: 0;
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+
+        .comment {
+            border-top: 1px solid #ddd;
+            padding: 12px 0;
+        }
+
+        .comment-meta,
+        .comment-count {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
         /* Категории */
         .category-list {
             display: grid;

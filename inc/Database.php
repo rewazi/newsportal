@@ -52,4 +52,10 @@ class DB
     {
         return $this->connection->exec($sql);
     }
+
+    public function executePrepared($sql, $params)
+    {
+        $statement = $this->connection->prepare($sql);
+        return $statement->execute($params);
+    }
 }

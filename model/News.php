@@ -24,7 +24,8 @@ class News
                 n.picture,
                 n.user_id,
                 n.category_id,
-                c.name AS category_name
+                c.name AS category_name,
+                (SELECT COUNT(*) FROM comments cm WHERE cm.news_id = n.id) AS comment_count
             FROM news n
             LEFT JOIN category c 
                 ON n.category_id = c.id
@@ -46,7 +47,8 @@ class News
                 n.picture,
                 n.user_id,
                 n.category_id,
-                c.name AS category_name
+                c.name AS category_name,
+                (SELECT COUNT(*) FROM comments cm WHERE cm.news_id = n.id) AS comment_count
             FROM news n
             LEFT JOIN category c 
                 ON n.category_id = c.id
@@ -69,7 +71,8 @@ class News
                 n.picture,
                 n.user_id,
                 n.category_id,
-                c.name AS category_name
+                c.name AS category_name,
+                (SELECT COUNT(*) FROM comments cm WHERE cm.news_id = n.id) AS comment_count
             FROM news n
             LEFT JOIN category c 
                 ON n.category_id = c.id
@@ -88,12 +91,13 @@ class News
                 n.id,
                 n.title,
                 n.text,
-                n.image,
-                n.user,
+                n.picture,
+                n.user_id,
                 n.category_id,
-                c.name AS category_name
+                c.name AS category_name,
+                (SELECT COUNT(*) FROM comments cm WHERE cm.news_id = n.id) AS comment_count
             FROM news n
-            LEFT JOIN categories c 
+            LEFT JOIN category c 
                 ON n.category_id = c.id
             WHERE n.category_id = $categoryId
             ORDER BY n.id DESC

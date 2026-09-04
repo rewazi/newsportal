@@ -29,6 +29,11 @@ class Routing
                 $controller->catNews($id);
                 break;
 
+            case 'addcomment':
+                $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+                $controller->addComment($id);
+                break;
+
             case 'readnews':
                 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
                 $controller->readNews($id);
