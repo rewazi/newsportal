@@ -173,6 +173,42 @@ php -S localhost:8000
 
 Seejärel avage <http://localhost:8000/>. XAMPP-i kaudu käivitamisel kasutage eespool toodud aadressi.
 
+## Automaatsete testide käivitamine
+
+Testifail `tests/run.php` kontrollib peamisi funktsioone: kasutaja registreerimist ja sisselogimist, administraatori autentimist, kategooria ja uudise loomist ning kommentaaride lisamist ja lugemist.
+
+Enne testide käivitamist peab andmebaas olema loodud selle README-s oleva SQL-skripti abil ning MySQL peab töötama. Käivitage käsk projekti põhikaustas `C:\xampp\htdocs\newsportal`, mitte `tests` kaustas:
+
+```powershell
+php tests/run.php
+```
+
+Kui Windows kuvab teate, et `php` ei ole tuntud käsk, kasutage XAMPP-i PHP-d otse:
+
+```powershell
+C:\xampp\php\php.exe tests\run.php
+```
+
+Kui olete juba `tests` kaustas, kasutage järgmist käsku:
+
+```powershell
+C:\xampp\php\php.exe run.php
+```
+
+Kui XAMPP on paigaldatud teise asukohta, asendage `C:\xampp\php\php.exe` oma tegeliku `php.exe` failiga.
+
+Kui andmebaasiühenduse andmed erinevad XAMPP-i vaikeseadetest, määrake enne käivitamist keskkonnamuutujad:
+
+```powershell
+$env:NEWS_PORTAL_DB_HOST = 'localhost'
+$env:NEWS_PORTAL_DB_NAME = 'newsportal'
+$env:NEWS_PORTAL_DB_USER = 'root'
+$env:NEWS_PORTAL_DB_PASSWORD = 'parool'
+php tests/run.php
+```
+
+Test loob ajutised unikaalsed andmed ja kustutab need pärast kontrolli lõppu. Eduka käivitamise korral lõpeb käsk koodiga `0`; vea korral koodiga `1`.
+
 ## Olulised märkused
 
 - Projektis ei ole Composerit ega valmis migratsioonifaili. Tabelid tuleb luua selles README-s oleva SQL-skripti abil.
